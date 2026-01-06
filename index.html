@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laravel Developer Portfolio</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== FIXED BACKGROUND ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(253,224,71,.15), transparent 40%),
+              url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920")
+              no-repeat center / cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ===== ADVANCED REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.96);
+  transition: opacity .9s cubic-bezier(.19,1,.22,1),
+              transform .9s cubic-bezier(.19,1,.22,1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ===== STAGGER ===== */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.stagger.active > * {
+  animation: stagger .8s cubic-bezier(.19,1,.22,1) forwards;
+}
+
+.stagger.active > *:nth-child(1) { animation-delay: .1s }
+.stagger.active > *:nth-child(2) { animation-delay: .25s }
+.stagger.active > *:nth-child(3) { animation-delay: .4s }
+.stagger.active > *:nth-child(4) { animation-delay: .55s }
+.stagger.active > *:nth-child(5) { animation-delay: .7s }
+.stagger.active > *:nth-child(6) { animation-delay: .85s }
+
+@keyframes stagger {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 3D HOVER ===== */
+.card {
+  transform-style: preserve-3d;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.05);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+
+/* ===== GLOW ===== */
+.glow {
+  position: relative;
+}
+
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, transparent, rgba(253,224,71,.4), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+  border-radius: inherit;
+
+  /* ✅ CRITICAL FIX */
+  pointer-events: none;
+}
+
+.glow:hover::after {
+  opacity: 1;
+}
+
+/* ===== FLOAT ===== */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+</style>
+</head>
+
+<body class="text-gray-100">
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center px-6">
+  <div class="max-w-2xl bg-black/40 backdrop-blur-xl p-10 rounded-3xl text-center reveal active glow float">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+      Hi, I’m <span class="text-yellow-400">Laravel Developer</span>
+    </h1>
+    <p class="text-gray-300 mb-8">
+      Crafting scalable, secure & high-performance web applications
+    </p>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href="#projects" class="px-7 py-3 bg-yellow-400 text-black rounded-full font-semibold transition hover:scale-110">
+        View Projects
+      </a>
+      <a href="#contact" class="px-7 py-3 border rounded-full transition hover:bg-white hover:text-black hover:scale-110">
+        Hire Me
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto bg-black/40 backdrop-blur-xl p-10 rounded-3xl reveal">
+    <h2 class="text-3xl font-bold text-yellow-400 text-center mb-6">About Me</h2>
+    <p class="text-center text-gray-300 leading-relaxed">
+      Laravel developer specializing in admin panels, finance tools,
+      REST APIs and scalable web architecture using Laravel & Livewire.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto bg-black/40 backdrop-blur-xl p-10 rounded-3xl reveal">
+    <h2 class="text-3xl font-bold text-yellow-400 text-center mb-10">Skills</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 text-center stagger">
+      <div class="card glow bg-black/30 p-4 rounded-xl">Laravel</div>
+      <div class="card glow bg-black/30 p-4 rounded-xl">Livewire</div>
+      <div class="card glow bg-black/30 p-4 rounded-xl">MySQL</div>
+      <div class="card glow bg-black/30 p-4 rounded-xl">REST API</div>
+      <div class="card glow bg-black/30 p-4 rounded-xl">HTML / CSS</div>
+      <div class="card glow bg-black/30 p-4 rounded-xl">JavaScript</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto bg-black/40 backdrop-blur-xl p-10 rounded-3xl reveal">
+    <h2 class="text-3xl font-bold text-yellow-400 text-center mb-14">
+      Experience
+    </h2>
+
+    <div class="relative border-l border-yellow-400/30 pl-6 space-y-12 stagger">
+
+      <!-- Experience Item -->
+      <div class="relative">
+        <span class="absolute -left-[11px] top-2 w-5 h-5 bg-yellow-400 rounded-full"></span>
+
+        <div class="card glow bg-black/30 p-6 rounded-2xl">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="text-xl font-semibold">Laravel Developer</h3>
+              <p class="text-sm text-yellow-400">2023 – Present</p>
+            </div>
+
+            <button
+              class="text-yellow-400 text-sm underline"
+              onclick="toggleExperience(this)">
+              View details
+            </button>
+          </div>
+
+          <!-- Hidden Content -->
+          <div class="experience-details mt-4 overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+              <li>Developed scalable Laravel & Livewire applications</li>
+              <li>Built admin panels with roles & permissions</li>
+              <li>Created finance calculators (EMI, SIP, Lumpsum)</li>
+              <li>Optimized queries & application performance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Item -->
+      <div class="relative">
+        <span class="absolute -left-[11px] top-2 w-5 h-5 bg-yellow-400 rounded-full"></span>
+
+        <div class="card glow bg-black/30 p-6 rounded-2xl">
+          <div class="flex justify-between items-start gap-4">
+            <div>
+              <h3 class="text-xl font-semibold">Backend Web Developer</h3>
+              <p class="text-sm text-yellow-400">2022 – 2023</p>
+            </div>
+
+            <button
+              class="text-yellow-400 text-sm underline"
+              onclick="toggleExperience(this)">
+              View details
+            </button>
+          </div>
+
+          <div class="experience-details mt-4 overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+              <li>Designed MySQL database schemas</li>
+              <li>Implemented authentication & authorization</li>
+              <li>Integrated third-party APIs</li>
+              <li>Maintained secure backend architecture</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24 px-6">
+  <h2 class="text-3xl font-bold text-yellow-400 text-center mb-14 reveal">Projects</h2>
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 stagger">
+    <div class="card glow bg-black/40 backdrop-blur-xl p-8 rounded-3xl">
+      <h3 class="text-xl font-semibold mb-2">Finance Calculator</h3>
+      <p class="text-gray-300">EMI, SIP & Lumpsum calculators using Livewire.</p>
+    </div>
+
+    <div class="card glow bg-black/40 backdrop-blur-xl p-8 rounded-3xl">
+      <h3 class="text-xl font-semibold mb-2">Admin Panel</h3>
+      <p class="text-gray-300">Role-based system with dashboards & reports.</p>
+    </div>
+
+    <div class="card glow bg-black/40 backdrop-blur-xl p-8 rounded-3xl">
+      <h3 class="text-xl font-semibold mb-2">CSV to PDF Tool</h3>
+      <p class="text-gray-300">Queue-based large file processing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-xl mx-auto bg-black/40 backdrop-blur-xl p-10 rounded-3xl text-center reveal glow">
+    <h2 class="text-3xl font-bold text-yellow-400 mb-6">Contact</h2>
+    <p>📧 yourname@email.com</p>
+    <p>🐙 github.com/yourprofile</p>
+    <p>💼 linkedin.com/in/yourprofile</p>
+  </div>
+</section>
+
+<footer class="text-center py-10 text-gray-400 reveal">
+  © 2026 Laravel Developer Portfolio
+</footer>
+
+<!-- JS -->
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".reveal, .stagger").forEach(el => observer.observe(el));
+</script>
+<script>
+function toggleExperience(button) {
+  const details = button.closest('.card').querySelector('.experience-details');
+
+  if (details.classList.contains('open')) {
+    details.style.maxHeight = null;
+    details.classList.remove('open');
+    button.textContent = 'View details';
+  } else {
+    details.style.maxHeight = details.scrollHeight + 'px';
+    details.classList.add('open');
+    button.textContent = 'Hide details';
+  }
+}
+</script>
+
+</body>
+</html>
