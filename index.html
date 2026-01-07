@@ -188,7 +188,7 @@ body::before {
           </div>
 
           <!-- Hidden Content -->
-          <div class="experience-details mt-4 overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+          <div class="experience-details mt-4 overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-500 ease-in-out">
             <ul class="list-disc list-inside text-gray-300 space-y-2">
               <li>Developed scalable Laravel & Livewire applications</li>
               <li>Built admin panels with roles & permissions</li>
@@ -217,7 +217,7 @@ body::before {
             </button>
           </div>
 
-          <div class="experience-details mt-4 overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+          <div class="experience-details mt-4 overflow-hidden max-h-0 opacity-0 transition-[max-height,opacity] duration-500 ease-in-out">
             <ul class="list-disc list-inside text-gray-300 space-y-2">
               <li>Designed MySQL database schemas</li>
               <li>Implemented authentication & authorization</li>
@@ -285,11 +285,13 @@ function toggleExperience(button) {
   const details = button.closest('.card').querySelector('.experience-details');
 
   if (details.classList.contains('open')) {
-    details.style.maxHeight = null;
+    details.style.maxHeight = '0px';
+    details.style.opacity = '0';
     details.classList.remove('open');
     button.textContent = 'View details';
   } else {
     details.style.maxHeight = details.scrollHeight + 'px';
+    details.style.opacity = '1';
     details.classList.add('open');
     button.textContent = 'Hide details';
   }
